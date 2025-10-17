@@ -121,6 +121,7 @@ fun FlipClockScreen(modifier: Modifier = Modifier) {
                     value = hourTens.takeIf { hour12 >= 10 },
                     textStyle = digitTextStyle
                 )
+                FlipDigit(value = hourTens, textStyle = digitTextStyle)
                 FlipDigit(value = hourOnes, textStyle = digitTextStyle)
                 BlinkingColon(isVisible = second % 2 == 0)
                 FlipDigit(value = minuteTens, textStyle = digitTextStyle)
@@ -153,6 +154,7 @@ private enum class DigitHalf { Top, Bottom }
 @Composable
 private fun FlipDigit(
     value: Int?,
+    value: Int,
     modifier: Modifier = Modifier,
     textStyle: TextStyle,
     cardColor: Color = Color(0xFF1B1B1F),
@@ -256,6 +258,7 @@ private fun FlipDigit(
 @Composable
 private fun DigitStaticHalf(
     digit: Int?,
+    digit: Int,
     textStyle: TextStyle,
     color: Color,
     half: DigitHalf,
@@ -275,6 +278,7 @@ private fun DigitStaticHalf(
     ) {
         Text(
             text = digit?.toString() ?: "",
+            text = digit.toString(),
             style = textStyle,
             color = Color.White,
             textAlign = TextAlign.Center
@@ -285,6 +289,7 @@ private fun DigitStaticHalf(
 @Composable
 private fun DigitFlipHalf(
     digit: Int?,
+    digit: Int,
     textStyle: TextStyle,
     color: Color,
     half: DigitHalf,
@@ -313,6 +318,7 @@ private fun DigitFlipHalf(
     ) {
         Text(
             text = digit?.toString() ?: "",
+            text = digit.toString(),
             style = textStyle,
             color = Color.White,
             textAlign = TextAlign.Center
